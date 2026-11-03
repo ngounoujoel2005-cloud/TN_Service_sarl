@@ -1,0 +1,3 @@
+export default function APropos() {
+  return <section className="tn-simple-page"><p className="tn-simple-page__eyebrow">À PROPOS DE NOUS</p><h1>TN SERVICES</h1><p>Un écosystème d’entreprises camerounaises au service de la formation, du voyage et de l’accompagnement des particuliers et des organisations.</p><div className="tn-simple-page__cards"><article><h2>Notre mission</h2><p>Rendre accessibles des services utiles et de qualité, avec un accompagnement de proximité.</p></article><article><h2>Notre engagement</h2><p>Des équipes à l’écoute et des solutions adaptées aux besoins de chacun.</p></article></div></section>
+}

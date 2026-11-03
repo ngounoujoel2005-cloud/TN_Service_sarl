@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TN SERVICES</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Couleurs de la vidéo (loader) */
+  --bg:#03241a; --bg2:#01110c; --neon:#19f07f; --neon2:#0fbf62;
+  /* Couleurs du site (panel_couleur_site.txt) */
+  --navy:#0D233A; --green:#38A14B; --sky:#2196F3; --soft:#2C3E50; --lime:#8BC34A; --white:#FFFFFF;
+  --k:.8; /* vitesse globale : plus petit = plus rapide */
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:'Poppins',system-ui,sans-serif;color:var(--navy);background:#fff}
+body.lock{overflow:hidden}
+
+/* ============ LOADER ============ */
+#tn-loader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;
+  background:radial-gradient(ellipse at 50% 45%,var(--bg) 0%,var(--bg2) 100%);
+  transition:opacity .9s ease,transform .9s cubic-bezier(.7,0,.2,1),visibility 0s .9s}
+#tn-loader.done{opacity:0;transform:scale(1.06);visibility:hidden;pointer-events:none}
+#tn-loader svg{width:min(88vw,820px);height:auto;overflow:visible}
+.bar{position:absolute;left:50%;bottom:calc(8vh + env(safe-area-inset-bottom,0px));width:min(56vw,260px);height:3px;
+  background:rgba(25,240,127,.15);border-radius:3px;transform:translateX(-50%);overflow:hidden}
+.bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--neon2),var(--neon));
+  transform-origin:left;transform:scaleX(0);box-shadow:0 0 10px var(--neon);
+  animation:bar calc(5s * var(--k)) cubic-bezier(.5,0,.2,1) forwards}
+@keyframes bar{to{transform:scaleX(.92)}}
+#tn-loader.ready .bar i{animation:none;transform:scaleX(1);transition:transform .4s}
+
+/* Tracé néon */
+.s{fill-opacity:0;stroke:var(--neon);stroke-width:7;stroke-linejoin:round;stroke-linecap:round;
+   stroke-dasharray:1;stroke-dashoffset:1;
+   animation:
+     draw calc(var(--dur,1) * var(--k) * 1s) cubic-bezier(.6,0,.3,1) calc(var(--d) * var(--k) * 1s) forwards,
+     fillIn calc(.7 * var(--k) * 1s) ease calc(var(--f) * var(--k) * 1s) forwards}
+.t{fill-opacity:0;stroke:var(--neon);stroke-width:4;stroke-linejoin:round;
+   stroke-dasharray:1200;stroke-dashoffset:1200;
+   animation:
+     drawT calc(.8 * var(--k) * 1s) ease-out calc(var(--d) * var(--k) * 1s) forwards,
+     fillIn calc(.6 * var(--k) * 1s) ease calc(var(--f) * var(--k) * 1s) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes drawT{to{stroke-dashoffset:0}}
+@keyframes fillIn{to{fill-opacity:1;stroke-opacity:0}}
+
+/* Flip 3D (comme la vidéo) */
+.flip{transform-box:fill-box;transform-origin:50% 50%;opacity:0;
+  animation:flip calc(1.1 * var(--k) * 1s) cubic-bezier(.2,.7,.2,1) calc(var(--d) * var(--k) * 1s) forwards}
+@keyframes flip{
+  0%{opacity:0;transform:perspective(700px) rotateY(-95deg)}
+  30%{opacity:1}
+  100%{opacity:1;transform:perspective(700px) rotateY(0)}}
+
+/* Écho fantôme */
+.ghost{fill:none;stroke:var(--neon2);stroke-width:6;opacity:0;
+  animation:ghost calc(1.6 * var(--k) * 1s) ease calc(var(--d) * var(--k) * 1s) forwards}
+@keyframes ghost{0%{opacity:0;transform:translateX(0)}25%{opacity:.35}100%{opacity:0;transform:translateX(34px)}}
+
+/* Lueur néon, retirée à la fin */
+#logo{filter:drop-shadow(0 0 10px rgba(25,240,127,.75));
+  animation:glowOff calc(.9 * var(--k) * 1s) ease calc(4.1 * var(--k) * 1s) forwards}
+@keyframes glowOff{to{filter:drop-shadow(0 0 0 rgba(25,240,127,0)) drop-shadow(0 6px 18px rgba(0,0,0,.35))}}
+
+/* Ombre bleu nuit de "SERVICES" */
+.sh{fill:#0a1a5c;opacity:0;animation:fadeIn calc(.5 * var(--k) * 1s) ease calc(var(--f) * var(--k) * 1s) forwards}
+@keyframes fadeIn{to{opacity:1}}
+
+/* Slogan : révélation en balayage */
+#wipeRect{width:0;animation:wipe calc(1.3 * var(--k) * 1s) cubic-bezier(.5,0,.2,1) calc(3.3 * var(--k) * 1s) forwards}
+@keyframes wipe{to{width:1160px}}
+.tag{font-family:'Allura','Brush Script MT',cursive;font-size:150px;fill:var(--neon);
+  animation:tagCol calc(.7 * var(--k) * 1s) ease calc(4.6 * var(--k) * 1s) forwards}
+@keyframes tagCol{to{fill:#05249f}}
+
+/* Arcs orbitaux (comme la vidéo) */
+.orb{fill:none;stroke:var(--neon);stroke-width:5;stroke-linecap:round;opacity:0;
+  transform-box:view-box;transform-origin:1160px 800px;
+  animation:orb calc(1.8 * var(--k) * 1s) cubic-bezier(.4,0,.2,1) calc(var(--d) * var(--k) * 1s) forwards}
+@keyframes orb{0%{opacity:0;transform:rotate(-70deg)}25%{opacity:.8}100%{opacity:0;transform:rotate(200deg)}}
+
+/* Reflet qui balaie le logo final */
+#shine{opacity:0;animation:shine calc(1.1 * var(--k) * 1s) ease calc(4.9 * var(--k) * 1s) forwards}
+@keyframes shine{0%{opacity:0;transform:translateX(-700px)}20%{opacity:.5}100%{opacity:0;transform:translateX(1500px)}}
+
+@media (prefers-reduced-motion:reduce){
+  #tn-loader *{animation-duration:.01s!important;animation-delay:0s!important}
+}
+
+/* ============ SITE DE DÉMO (à remplacer par ton vrai site) ============ */
+header.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 6vw;border-bottom:1px solid #e6ecf1}
+header.nav b{font-size:1.2rem;color:var(--navy)} header.nav b span{color:var(--green)}
+header.nav a{color:var(--soft);text-decoration:none;margin-left:22px;font-size:.95rem}
+.hero{padding:12vh 6vw;max-width:900px}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;color:var(--navy)}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero p{margin-top:18px;color:var(--soft);font-size:1.1rem}
+.btn{display:inline-block;margin-top:28px;padding:14px 26px;border-radius:999px;background:var(--green);color:#fff;text-decoration:none;font-weight:600}
+.replay{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));padding:10px 16px;border-radius:999px;border:1px solid var(--sky);background:#fff;color:var(--sky);font:600 .85rem Poppins,sans-serif;cursor:pointer}
+</style>
+</head>
+<body class="lock">
+
+<!-- ======== LOADER TN SERVICES ======== -->
+<div id="tn-loader" role="status" aria-label="Chargement de TN SERVICES">
+  <svg viewBox="340 250 1640 1100" aria-hidden="true">
+    <defs>
+      <linearGradient id="gB" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" stop-color="#05249f"/><stop offset=".5" stop-color="#0f4fb0"/><stop offset="1" stop-color="#05249f"/>
+      </linearGradient>
+      <linearGradient id="gB2" x1="0" x2="1" y1="0" y2="0">
+        <stop offset="0" stop-color="#05249f"/><stop offset="1" stop-color="#0f4fb0"/>
+      </linearGradient>
+      <linearGradient id="gShine" x1="0" x2="1">
+        <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      </linearGradient>
+      <clipPath id="clipWipe"><rect id="wipeRect" x="800" y="1100" height="220"/></clipPath>
+      <clipPath id="clipLogo"><rect x="340" y="250" width="1640" height="1100"/></clipPath>
+    </defs>
+
+    <g id="logo">
+      <!-- Orbites -->
+      <path class="orb" style="--d:2.2" d="M1160 280 A520 520 0 0 1 1680 800"/>
+      <path class="orb" style="--d:2.6" d="M1160 1320 A520 520 0 0 1 640 800" />
+
+      <!-- Ellipse (globe) -->
+      <g class="flip" style="--d:1.9">
+        <ellipse class="s" pathLength="1" style="--d:1.9;--dur:1;--f:4.0" cx="868" cy="536" rx="178" ry="218" fill="url(#gB)"/>
+      </g>
+      <!-- Swoosh bleu -->
+      <path class="s" pathLength="1" style="--d:2.1;--dur:1.1;--f:4.1" fill="url(#gB2)"
+        d="M690 545C500 600 378 740 378 900C378 1130 560 1300 955 1305C650 1260 440 1100 442 900C445 740 540 630 690 570Z"/>
+      <!-- Swoosh vert -->
+      <path class="s" pathLength="1" style="--d:2.3;--dur:1.1;--f:4.2" fill="#9aff00"
+        d="M1445 626C1300 540 1150 500 1030 500C700 500 445 700 447 900C450 1130 700 1305 1100 1302C750 1290 525 1120 525 930C525 720 780 545 1090 547C1220 547 1340 575 1445 626Z"/>
+
+      <!-- T -->
+      <g class="flip" style="--d:.3">
+        <path class="ghost" style="--d:.3" d="M655 708H903V762H813V1035H743V762H655Z"/>
+        <path class="s" pathLength="1" style="--d:.3;--dur:.9;--f:3.6" fill="url(#gB)"
+          d="M655 708H903V762H813V1035H743V762H655Z"/>
+      </g>
+      <!-- N -->
+      <g class="flip" style="--d:1.1">
+        <path class="ghost" style="--d:1.1" d="M829 810H887L1012 998V810H1069V1095H1007L885 908V1095H829Z"/>
+        <path class="s" pathLength="1" style="--d:1.1;--dur:.9;--f:3.8" fill="url(#gB)"
+          d="M829 810H887L1012 998V810H1069V1095H1007L885 908V1095H829Z"/>
+      </g>
+
+      <!-- SERVICES -->
+      <g id="word" font-family="Arial Black,Impact,'Arial Narrow Bold',Arial,sans-serif" font-weight="900" font-size="205"></g>
+
+      <!-- Slogan -->
+      <g clip-path="url(#clipWipe)">
+        <text class="tag" x="815" y="1235" textLength="1100" lengthAdjust="spacingAndGlyphs">Chacun y trouve son compte</text>
+      </g>
+
+      <!-- Reflet -->
+      <g clip-path="url(#clipLogo)"><rect id="shine" x="340" y="250" width="160" height="1100" fill="url(#gShine)" transform="skewX(-18)"/></g>
+    </g>
+  </svg>
+  <div class="bar"><i></i></div>
+</div>
+
+<!-- ======== TON SITE (démo) ======== -->
+<header class="nav">
+  <b>TN <span>SERVICES</span></b>
+  <nav><a href="#">Accueil</a><a href="#">Services</a><a href="#">À propos</a><a href="#">Contact</a></nav>
+</header>
+<main class="hero">
+  <h1>Chacun y trouve <em>son compte</em></h1>
+  <p>Bienvenue sur TN SERVICES. Remplace ce contenu par celui de ton site : l'intro s'affiche au-dessus pendant le chargement.</p>
+  <a class="btn" href="#">Découvrir nos services</a>
+</main>
+<button class="replay" id="replay" type="button">↻ Rejouer l'intro</button>
+
+<script>
+(function(){
+  var loader = document.getElementById('tn-loader');
+  var MIN_MS = 4800;          // durée minimale d'affichage de l'animation
+  var KEY = 'tn_intro_seen';  // pour n'afficher l'intro qu'à la 1re visite
+  var SHOW_ONLY_FIRST_VISIT = false; // passe à true en production
+
+  /* --- Construction des lettres de SERVICES --- */
+  var letters = [['S',1090,88],['E',1188,80],['R',1282,92],['V',1370,100],['I',1478,26],['C',1512,90],['E',1620,80],['S',1708,88]];
+  var g = document.getElementById('word'), NS='http://www.w3.org/2000/svg', sh='', fg='';
+  letters.forEach(function(l,i){
+    var d = 2.6 + i*0.1, f = 4.2 + i*0.06;
+    sh += '<text class="sh" style="--f:'+f+'" x="'+(l[1]+7)+'" y="1067" textLength="'+l[2]+'" lengthAdjust="spacingAndGlyphs">'+l[0]+'</text>';
+    fg += '<text class="t" style="--d:'+d+';--f:'+f+'" x="'+l[1]+'" y="1060" textLength="'+l[2]+'" lengthAdjust="spacingAndGlyphs" fill="#9aff00">'+l[0]+'</text>';
+  });
+  g.innerHTML = sh + fg;
+
+  function hide(){
+    loader.classList.add('ready');
+    setTimeout(function(){
+      loader.classList.add('done');
+      document.body.classList.remove('lock');
+      try{ localStorage.setItem(KEY,'1'); }catch(e){}
+    }, 350);
+  }
+
+  function run(){
+    var t0 = Date.now(), loaded = document.readyState === 'complete';
+    function check(){
+      if(loaded && Date.now() - t0 >= MIN_MS) hide();
+      else setTimeout(check, 80);
+    }
+    if(!loaded) window.addEventListener('load', function(){ loaded = true; });
+    check();
+  }
+
+  var seen = false;
+  try{ seen = localStorage.getItem(KEY) === '1'; }catch(e){}
+  if(SHOW_ONLY_FIRST_VISIT && seen){
+    loader.style.display = 'none';
+    document.body.classList.remove('lock');
+  } else {
+    run();
+  }
+
+  /* Bouton de démo : rejoue l'intro (à supprimer en production) */
+  document.getElementById('replay').addEventListener('click', function(){
+    var clone = loader.cloneNode(true);
+    clone.classList.remove('done','ready');
+    loader.parentNode.replaceChild(clone, loader);
+    loader = clone;
+    document.body.classList.add('lock');
+    run();
+  });
+})();
+</script>
+</body>
+</html>

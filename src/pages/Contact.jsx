@@ -1,0 +1,3 @@
+export default function Contact() {
+  return <section className="tn-simple-page"><p className="tn-simple-page__eyebrow">NOUS SOMMES À VOTRE ÉCOUTE</p><h1>Contactez TN SERVICES</h1><p>Notre équipe vous accueille à Douala du lundi au samedi, de 08h00 à 18h30.</p><div className="tn-simple-page__cards"><article><h2>Par téléphone</h2><p><a href="tel:+237698062575">698 06 25 75</a> · <a href="tel:+237653994010">653 99 40 10</a></p></article><article><h2>Par e-mail</h2><p><a href="mailto:contact@tngroup.cm">contact@tngroup.cm</a></p></article><article><h2>À Douala</h2><p>Direction Nkolbong, face Station Total Nkolbong, Carrefour Tradex.</p></article></div></section>
+}
