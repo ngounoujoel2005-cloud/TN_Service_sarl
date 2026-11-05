@@ -1,0 +1,11 @@
+.tn-pricing-page__cards article{display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-height:280px}
+.tn-pricing-page__icon{width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(53,160,83,.2);border-radius:15px;background:rgba(53,160,83,.12);color:#258b47}
+.tn-pricing-page__cards h2{margin:0;font-size:18px}
+.tn-pricing-page__offer{color:#208b46;font-size:1.15rem;font-weight:850}
+.tn-pricing-page__cards small{display:block;color:#40566b;font-size:13px;line-height:1.6}
+.tn-pricing-page__cards a{width:100%;margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:750;text-decoration:none}
+.tn-pricing-page__contact{min-height:48px;margin-top:26px;padding:0 18px;display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.76);border-radius:999px;background:rgba(46,155,77,.92);color:white!important;font-weight:750;text-decoration:none;box-shadow:0 8px 20px rgba(30,110,60,.2);transition:transform .22s ease,box-shadow .22s ease}
+.tn-pricing-page__contact:hover{transform:translateY(-3px);box-shadow:0 12px 25px rgba(30,110,60,.28)}
+html[data-theme='dark'] .tn-pricing-page__icon{border-color:rgba(116,213,150,.22);background:rgba(70,177,103,.16);color:#8ce2a7}
+html[data-theme='dark'] .tn-pricing-page__offer{color:#8ce2a7}
+html[data-theme='dark'] .tn-pricing-page__cards small{color:#c4d4df}

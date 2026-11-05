@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import WhatsAppContact from './components/WhatsAppContact.jsx'
@@ -7,10 +8,31 @@ import Index from './pages/Index.jsx'
 import Filiales from './pages/Filiales.jsx'
 import Contact from './pages/Contact.jsx'
 import APropos from './pages/A-propos.jsx'
+import Tarifs from './pages/Tarifs.jsx'
+import { LanguageProvider } from './i18n/LanguageContext.jsx'
 
-export default function App() {
+function RouteHashScroll() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (!hash) return undefined
+    const frame = window.requestAnimationFrame(() => {
+      const target = document.getElementById(decodeURIComponent(hash.slice(1)))
+      target?.scrollIntoView({
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        block: 'start',
+      })
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [pathname, hash])
+
+  return null
+}
+
+function AppContent() {
   return (
     <BrowserRouter>
+      <RouteHashScroll />
       <PageBackground />
       <Navbar />
       <main className="tn-page-content">
@@ -18,8 +40,8 @@ export default function App() {
           <Route path="/" element={<Index />} />
           <Route path="/filiales" element={<Filiales />} />
           <Route path="/filiales/:slug" element={<Filiales />} />
-          <Route path="/tarifs" element={<section className="tn-simple-page"><h1>Tarifs</h1><p>Découvrez les tarifs de nos services TN SERVICES.</p></section>} />
-          <Route path="/agences" element={<section className="tn-simple-page"><h1>Nos agences</h1><p>Retrouvez nos campus et agences à Douala.</p></section>} />
+          <Route path="/tarifs" element={<Tarifs />} />
+          <Route path="/agences" element={<Navigate to="/contact#cp-locations" replace />} />
           <Route path="/a-propos" element={<APropos />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Index />} />
@@ -29,4 +51,8 @@ export default function App() {
       <WhatsAppContact />
     </BrowserRouter>
   )
+}
+
+export default function App() {
+  return <LanguageProvider><AppContent /></LanguageProvider>
 }

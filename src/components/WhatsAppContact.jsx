@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 import './WhatsAppContact.css'
 
 const contacts = [
@@ -11,6 +12,7 @@ function WhatsAppIcon() {
 }
 
 export default function WhatsAppContact() {
+  const { t } = useLanguage()
   const [open, setOpen] = useState(false)
   const widgetRef = useRef(null)
 
@@ -31,15 +33,15 @@ export default function WhatsAppContact() {
 
   return (
     <div className="tn-whatsapp" ref={widgetRef}>
-      {open && <div className="tn-whatsapp__panel" role="dialog" aria-label="Choisir un numéro WhatsApp">
-        <strong>Contactez TN SERVICES</strong>
-        <p>Choisissez le numéro WhatsApp à contacter :</p>
-        {contacts.map((contact) => <a key={contact.number} href={contact.href} target="_blank" rel="noreferrer">
-          <span><b>{contact.name}</b><small>{contact.number}</small></span><WhatsAppIcon />
+      {open && <div className="tn-whatsapp__panel" role="dialog" aria-label={t('whatsapp.dialog', 'Choisir un numero WhatsApp')}>
+        <strong>{t('whatsapp.title', 'Contactez TN SERVICES')}</strong>
+        <p>{t('whatsapp.description', 'Choisissez le numero WhatsApp a contacter :')}</p>
+        {contacts.map((contact, index) => <a key={contact.number} href={contact.href} target="_blank" rel="noreferrer">
+          <span><b>{t(index === 0 ? 'whatsapp.main' : 'whatsapp.agency', contact.name)}</b><small>{contact.number}</small></span><WhatsAppIcon />
         </a>)}
       </div>}
       <button className="tn-whatsapp__button" type="button" aria-expanded={open} onClick={() => setOpen((value) => !value)}>
-        <WhatsAppIcon /><span>Contactez-nous</span>
+        <WhatsAppIcon /><span>{t('whatsapp.button', 'Contactez-nous')}</span>
       </button>
     </div>
   )

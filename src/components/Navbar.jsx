@@ -7,10 +7,11 @@ import gestionLogo from '../assets/gestion-fiscalite-logo.jpeg'
 import driveproLogo from '../assets/drivepro-logo.jpeg'
 import lorenaLogo from '../assets/lorena-logo.png'
 import tnServicesLogo from '../assets/tn-services-logo.jpeg'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 import './Navbar.css'
 
 const links = [
-  { to: '/a-propos', label: 'À propos', icon: Info },
+  { to: '/a-propos', label: 'A propos', icon: Info },
   { to: '/contact', label: 'Contact/Localisation', icon: MapPin },
 ]
 const branches = [
@@ -25,6 +26,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [branchesOpen, setBranchesOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
+  const { language, toggleLanguage, t } = useLanguage()
   const branchMenuRef = useRef(null)
   const { pathname } = useLocation()
 
@@ -54,33 +56,33 @@ export default function Navbar() {
           <span className="tn-navbar__seal"><img src={tnServicesLogo} alt="" /></span>
           <span className="tn-navbar__wordmark">TN <b>SERVICES</b></span>
         </Link>
-        <button className="tn-navbar__menu-toggle" type="button" aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+        <button className="tn-navbar__menu-toggle" type="button" aria-label={menuOpen ? t('nav.closeMenu', 'Fermer le menu') : t('nav.openMenu', 'Ouvrir le menu')} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
-        <nav className={`tn-navbar__links${menuOpen ? ' is-open' : ''}`} aria-label="Navigation principale">
+        <nav className={`tn-navbar__links${menuOpen ? ' is-open' : ''}`} aria-label={t('nav.aria', 'Navigation principale')}>
           <NavLink to="/" end className={({ isActive }) => `tn-navbar__link${isActive ? ' is-active' : ''}`} onClick={() => { setMenuOpen(false); setBranchesOpen(false) }}>
-            <span className="tn-navbar__home-icon" aria-hidden="true">⌂</span><span>Accueil</span>
+            <span className="tn-navbar__home-icon" aria-hidden="true">⌂</span><span>{t('nav.home', 'Accueil')}</span>
           </NavLink>
           <div ref={branchMenuRef} className={`tn-navbar__branch-menu${branchesOpen ? ' is-open' : ''}${pathname.startsWith('/filiales') ? ' is-active' : ''}`}>
             <button className="tn-navbar__link tn-navbar__branch-trigger" type="button" aria-expanded={branchesOpen} onClick={() => setBranchesOpen(!branchesOpen)}>
-              <Layers3 size={17} strokeWidth={2.2} /><span>Filiales</span><ChevronDown className="tn-navbar__chevron" size={15} />
+              <Layers3 size={17} strokeWidth={2.2} /><span>{t('nav.branches', 'Filiales')}</span><ChevronDown className="tn-navbar__chevron" size={15} />
             </button>
             <div className="tn-navbar__dropdown">
               {branches.map((branch) => <Link className={`tn-navbar__dropdown-link tn-navbar__dropdown-link--${branch.slug}`} key={branch.slug} to={`/filiales/${branch.slug}`} onClick={() => { setBranchesOpen(false); setMenuOpen(false) }}>
-                <img src={branch.image} alt="" /><span>{branch.label}</span>
+                <img src={branch.image} alt="" /><span>{language === 'en' && branch.slug === 'gestion' ? 'TN Accounting & Taxation' : branch.label}</span>
               </Link>)}
-              <Link className="tn-navbar__all-branches" to="/filiales" onClick={() => { setBranchesOpen(false); setMenuOpen(false) }}>Toutes les filiales</Link>
+              <Link className="tn-navbar__all-branches" to="/filiales" onClick={() => { setBranchesOpen(false); setMenuOpen(false) }}>{t('nav.allBranches', 'Toutes les filiales')}</Link>
             </div>
           </div>
           {links.map(({ to, label, icon: Icon }) => (
             <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `tn-navbar__link${isActive ? ' is-active' : ''}`} onClick={() => { setMenuOpen(false); setBranchesOpen(false) }}>
-              <Icon size={17} strokeWidth={2.2} /><span>{label}</span>
+              <Icon size={17} strokeWidth={2.2} /><span>{t(to === '/a-propos' ? 'nav.about' : 'nav.contact', label)}</span>
             </NavLink>
           ))}
           <div className="tn-navbar__tools">
-            <button className="tn-navbar__round" type="button" onClick={() => setDarkMode(!darkMode)} aria-label={darkMode ? 'Activer le thème clair' : 'Activer le thème sombre'} aria-pressed={darkMode}><Moon size={18} /></button>
-            <button className="tn-navbar__language" type="button" aria-label="Langue : français"><Globe2 size={17} /><b>FR</b><span>/ EN</span></button>
-            <Link className="tn-navbar__signup" to="/contact" onClick={() => { setMenuOpen(false); setBranchesOpen(false) }}><Send size={17} /> Pré-inscription</Link>
+            <button className="tn-navbar__round" type="button" onClick={() => setDarkMode(!darkMode)} aria-label={darkMode ? t('nav.lightTheme', 'Activer le thème clair') : t('nav.darkTheme', 'Activer le thème sombre')} aria-pressed={darkMode}><Moon size={18} /></button>
+            <button className="tn-navbar__language" type="button" onClick={toggleLanguage} aria-label={language === 'fr' ? 'Switch to English' : t('nav.language', 'Passer en français')} aria-pressed={language === 'en'}><Globe2 size={17} /><b>{language === 'fr' ? 'FR' : 'EN'}</b><span>/ {language === 'fr' ? 'EN' : 'FR'}</span></button>
+            <Link className="tn-navbar__signup" to="/contact#contact-form" onClick={() => { setMenuOpen(false); setBranchesOpen(false) }}><Send size={17} /> {t('nav.signup', 'Pre-inscription')}</Link>
           </div>
         </nav>
       </div>

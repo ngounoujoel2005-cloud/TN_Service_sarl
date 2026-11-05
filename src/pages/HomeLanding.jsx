@@ -22,6 +22,7 @@ import rccmLogo from '../assets/partner-rccm.png'
 import rccmMarkLogo from '../assets/partner-rccm-mark.jpg'
 import starTimesLogo from '../assets/partner-startimes-alt.png'
 import superCargoLogo from '../assets/partner-super-cargo.png'
+import { useLanguage } from '../i18n/LanguageContext.jsx'
 import './HomeLanding.css'
 
 const subsidiaries = [
@@ -66,26 +67,35 @@ const partners = [
   { name: 'Super Cargo Service', image: superCargoLogo },
 ]
 
-function SubsidiaryCard({ branch, index }) {
+const subsidiaryEnglish = {
+  itc: { short: 'Training & Languages', slogan: 'Speak the world. Work anywhere.', services: ['Professional IT', 'German', 'English', 'Chinese'] },
+  travel: { short: 'Immigration & Visas', slogan: 'Explore the world with confidence.', services: ['Study / Work Visas', 'Air Tickets', 'Diaspora Logistics'] },
+  gestion: { short: 'Accounting & POS', slogan: 'Manage better. Pay fairly.', services: ['Company Formation', 'Tax Returns', 'POS Systems'] },
+  drivepro: { short: 'Approved Driving School', slogan: 'The road to independence.', services: ['Licences A, B, C, D, E', 'Driving Practice', 'Private Track'] },
+  lorena: { short: 'Online Store', slogan: 'Technology at your fingertips.', services: ['HP / Dell Laptops', 'Touch POS Systems', 'Accessories & UPS'] },
+}
+
+function SubsidiaryCard({ branch, index, language, t }) {
   const Icon = branch.icon
+  const copy = language === 'en' ? subsidiaryEnglish[branch.slug] : branch
+  const branchName = t('branch.' + branch.slug + '.name', branch.name)
+  const branchDescription = t('branch.' + branch.slug + '.description', branch.description)
+  const fallbackPromo = branch.slug === 'itc' ? 'Dès 15 000 F / mois' : branch.slug === 'travel' ? 'Canada · Schengen · Dubaï' : branch.slug === 'gestion' ? 'Création en 72h' : branch.slug === 'drivepro' ? 'Permis A, B, C, D, E' : 'Livraison 24h à Douala'
+
   return (
-    <article className={`tn-branch-card tn-branch-card--${branch.slug}`} data-reveal data-reveal-direction={index % 2 === 0 ? 'left' : 'right'} style={{ '--branch-accent': branch.accent, '--branch-tint': branch.tint, '--branch-visual': `url(${branch.visual})`, '--branch-position': branch.position }}>
+    <article className={'tn-branch-card tn-branch-card--' + branch.slug} data-reveal data-reveal-direction={index % 2 === 0 ? 'left' : 'right'} style={{ '--branch-accent': branch.accent, '--branch-tint': branch.tint, '--branch-visual': 'url(' + branch.visual + ')', '--branch-position': branch.position }}>
       <div className="tn-branch-card__visual">
-        <span className="tn-branch-card__label"><Icon size={15} />{branch.short}</span>
-        {branch.slug === 'itc' && <span className="tn-branch-card__photo-tag">Dès 15 000 F / mois</span>}
-        {branch.slug === 'travel' && <span className="tn-branch-card__photo-tag">Canada · Schengen · Dubaï</span>}
-        {branch.slug === 'gestion' && <span className="tn-branch-card__photo-tag">Création en 72h</span>}
-        {branch.slug === 'drivepro' && <span className="tn-branch-card__photo-tag">Permis A, B, C, D, E</span>}
-        {branch.slug === 'lorena' && <span className="tn-branch-card__photo-tag">Livraison 24h à Douala</span>}
+        <span className="tn-branch-card__label"><Icon size={15} />{copy.short}</span>
+        <span className="tn-branch-card__photo-tag">{t('home.promo.' + branch.slug, fallbackPromo)}</span>
       </div>
       <div className="tn-branch-card__body">
         <div className="tn-branch-card__heading">
-          <span className="tn-branch-card__logo"><img src={branch.logo} alt={`Logo ${branch.name}`} /></span>
-          <div><h3>{branch.name}</h3><p>{branch.slogan}</p></div>
+          <span className="tn-branch-card__logo"><img src={branch.logo} alt={'Logo ' + branchName} /></span>
+          <div><h3>{branchName}</h3><p>{copy.slogan}</p></div>
         </div>
-        <p className="tn-branch-card__description">{branch.description}</p>
-        <div className="tn-branch-card__tags">{branch.services.map((service) => <span key={service}>{service}</span>)}</div>
-        <a className="tn-branch-card__link" href={`/filiales/${branch.slug}`}>Découvrir {branch.slug === 'lorena' ? 'la boutique' : 'la filiale'}<ArrowRight size={18} /></a>
+        <p className="tn-branch-card__description">{branchDescription}</p>
+        <div className="tn-branch-card__tags">{copy.services.map((service) => <span key={service}>{service}</span>)}</div>
+        <a className="tn-branch-card__link" href={'/filiales/' + branch.slug}>{branch.slug === 'lorena' ? t('home.discoverStore', 'Accéder à la boutique Lorena') : t('home.discoverBranch', 'Découvrir la filiale')}<ArrowRight size={18} /></a>
       </div>
     </article>
   )
@@ -100,6 +110,7 @@ function PartnerGroup({ duplicate = false }) {
 }
 
 export default function HomeLanding() {
+  const { language, t } = useLanguage()
   useEffect(() => {
     const elements = document.querySelectorAll('.tn-homepage [data-reveal]')
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -162,41 +173,41 @@ export default function HomeLanding() {
     <div className="tn-homepage">
       <section className="tn-home-intro" data-reveal data-reveal-direction="top">
         <div className="tn-home-intro__copy">
-          <div className="tn-home-kicker"><Sparkles size={16} /><span>TN SERVICES SARL · DOUALA</span><i /> <em>« Chacun y trouve son compte »</em></div>
-          <h1>L’Écosystème d’Excellence : <span>Formation, Mobilité, Gestion &amp; E-Commerce</span> à Douala.</h1>
-          <p>Notre objectif : proposer aux étudiants, professionnels et entreprises un accompagnement complet et accessible. TN SERVICES SARL structure cinq filiales complémentaires autour de la formation certifiante, des voyages, de la gestion et fiscalité, de l’auto-école et du commerce technologique en ligne.</p>
-          <div className="tn-home-intro__actions"><a className="tn-home-primary" href="/contact">Pré-inscription en ligne <ArrowRight size={18} /></a><a className="tn-home-secondary" href="/contact">Nos promotions pour les jeunes <Sparkles size={17} /></a></div>
+          <div className="tn-home-kicker"><Sparkles size={16} /><span>{t('home.kicker', 'TN SERVICES SARL - DOUALA')}</span><i /> <em>{t('home.motto', 'Chacun y trouve son compte')}</em></div>
+          <h1>{language === 'en' ? <>A complete ecosystem: <span>Training, Travel, Management &amp; E-Commerce</span> in Douala.</> : <>Un ecosysteme d'excellence : <span>Formation, Mobilite, Gestion &amp; E-Commerce</span> a Douala.</>}</h1>
+          <p>{t('home.intro', 'Notre objectif : un accompagnement complet pour les etudiants, professionnels et entreprises. TN SERVICES SARL regroupe cinq filiales dans la formation, les voyages, la gestion, l auto-ecole et le commerce en ligne.')}</p>
+          <div className="tn-home-intro__actions"><a className="tn-home-primary" href="/contact#contact-form">{t('home.preregister', 'Pre-inscription en ligne')} <ArrowRight size={18} /></a><a className="tn-home-secondary" href="/tarifs">{t('home.promotions', 'Nos promotions pour les jeunes')} <Sparkles size={17} /></a></div>
         </div>
-        <div className="tn-home-intro__photo"><img src={officeTeamImage} alt="Une équipe de professionnels noirs qui travaille ensemble dans un bureau" /></div>
+        <div className="tn-home-intro__photo"><img src={officeTeamImage} alt={t('home.teamAlt', 'Une equipe de professionnels noirs qui travaille ensemble dans un bureau')} /></div>
       </section>
 
-      <section className="tn-home-proof" data-reveal data-reveal-direction="left" aria-label="Agrément et localisations">
-        <span><BadgeCheck size={18} /> Agréé MINEFOP &amp; Ministère des Transports</span><i />
-        <span><MapPin size={18} /> Nkolbong, face Complexe Le Ciel · Yassa, rond-point côté du marché</span>
+      <section className="tn-home-proof" data-reveal data-reveal-direction="left" aria-label={t('home.proofLabel', 'Agrement et localisations')}>
+        <span><BadgeCheck size={18} /> {t('home.approval', 'Agreer MINEFOP et Ministere des Transports')}</span><i />
+        <span><MapPin size={18} /> {t('home.locations', 'Nkolbong, face au Complexe Le Ciel - Yassa, rond-point cote marche')}</span>
       </section>
 
-      <section className="tn-headquarters" id="siege" data-reveal data-reveal-direction="right" style={{ '--headquarters-image': `url(${headquartersImage})` }} aria-label="Siège social TN Services à Douala">
-        <span className="tn-headquarters__city">DOUALA · CAMEROUN</span>
-        <div className="tn-headquarters__caption"><span className="tn-headquarters__logo"><img src={tnLogo} alt="" /></span><div><strong>TN SERVICES SARL</strong><b>Siège social &amp; Campus Douala</b><p>Nkolbong, face Complexe Le Ciel · Yassa, rond-point côté du marché</p></div></div>
+      <section className="tn-headquarters" id="siege" data-reveal data-reveal-direction="right" style={{ '--headquarters-image': `url(${headquartersImage})` }} aria-label={t('home.headquarters', 'Siege social TN Services a Douala')}>
+        <span className="tn-headquarters__city">{t('home.city', 'DOUALA - CAMEROUN')}</span>
+        <div className="tn-headquarters__caption"><span className="tn-headquarters__logo"><img src={tnLogo} alt="" /></span><div><strong>TN SERVICES SARL</strong><b>{t('home.headquarters', 'Siege social et campus Douala')}</b><p>{t('home.locations', 'Nkolbong, face au Complexe Le Ciel - Yassa, rond-point cote marche')}</p></div></div>
       </section>
 
       <section className="tn-subsidiaries" data-reveal data-reveal-direction="left" id="services">
-        <div className="tn-section-heading"><div><span>NOTRE ÉCOSYSTÈME</span><h2>Cinq expertises, une même ambition.</h2></div><p>Des équipes et des services complémentaires pour vous accompagner à chaque étape.</p></div>
-        <div className="tn-subsidiaries__grid">{subsidiaries.map((branch, index) => <SubsidiaryCard key={branch.slug} branch={branch} index={index} />)}</div>
+        <div className="tn-section-heading"><div><span>{t('home.ecosystem', 'NOTRE ECOSYSTEME')}</span><h2>{t('home.sectionTitle', 'Cinq expertises, une meme ambition.')}</h2></div><p>{t('home.sectionDescription', 'Des equipes et des services complementaires vous accompagnent a chaque etape.')}</p></div>
+        <div className="tn-subsidiaries__grid">{subsidiaries.map((branch, index) => <SubsidiaryCard key={branch.slug} branch={branch} index={index} language={language} t={t} />)}</div>
       </section>
 
       <section className="tn-office-hours" id="bureaux" data-reveal data-reveal-direction="right">
-        <div className="tn-office-hours__intro"><span className="tn-section-icon"><Clock3 size={22} /></span><div><span>NOUS VOUS ACCUEILLONS</span><h2>Nos horaires &amp; bureaux</h2><p>Nos équipes vous reçoivent et vous accompagnent à Douala.</p></div></div>
+        <div className="tn-office-hours__intro"><span className="tn-section-icon"><Clock3 size={22} /></span><div><span>{t('home.welcome', 'NOUS VOUS ACCUEILLONS')}</span><h2>{t('home.officeTitle', 'Nos horaires et bureaux')}</h2><p>{t('home.officeDescription', 'Nos equipes vous accueillent et vous accompagnent a Douala.')}</p></div></div>
         <div className="tn-office-hours__cards">
-          <article className="tn-office-card" data-reveal data-reveal-direction="left"><div className="tn-office-card__icon"><Clock3 size={20} /></div><div><span>HORAIRES D’OUVERTURE</span><h3>Lundi – Samedi</h3><p>08h00 – 18h30</p><small>Fermé le dimanche et les jours fériés.</small></div></article>
-          <article className="tn-office-card" data-reveal data-reveal-direction="bottom"><div className="tn-office-card__icon is-green"><Building2 size={20} /></div><div><span>DIRECTION · NKOLBONG</span><h3>Siège social &amp; campus</h3><p>Face au Complexe Le Ciel,<br />Nkolbong, Douala.</p></div></article>
-          <article className="tn-office-card" data-reveal data-reveal-direction="right"><div className="tn-office-card__icon is-blue"><MapPin size={20} /></div><div><span>AGENCE · YASSA</span><h3>Agence &amp; piste auto-école</h3><p>Au rond-point de Yassa,<br />côté du marché, Douala.</p></div></article>
+          <article className="tn-office-card" data-reveal data-reveal-direction="left"><div className="tn-office-card__icon"><Clock3 size={20} /></div><div><span>{t('home.opening', 'HORAIRES D OUVERTURE')}</span><h3>{t('home.weekdays', 'Lundi - Samedi')}</h3><p>{t('home.time', '08h00 - 18h30')}</p><small>{t('home.closed', 'Ferme le dimanche et les jours feries.')}</small></div></article>
+          <article className="tn-office-card" data-reveal data-reveal-direction="bottom"><div className="tn-office-card__icon is-green"><Building2 size={20} /></div><div><span>{t('home.directionLabel', 'DIRECTION - NKOLBONG')}</span><h3>{t('home.headquartersTitle', 'Siege social et campus')}</h3><p>{t('home.headquartersAddress', 'Face au Complexe Le Ciel, Nkolbong, Douala.')}</p></div></article>
+          <article className="tn-office-card" data-reveal data-reveal-direction="right"><div className="tn-office-card__icon is-blue"><MapPin size={20} /></div><div><span>{t('home.yassaLabel', 'AGENCE - YASSA')}</span><h3>{t('home.yassaTitle', 'Agence et piste auto-ecole')}</h3><p>{t('home.yassaAddress', 'Au rond-point de Yassa, cote du marche, Douala.')}</p></div></article>
         </div>
       </section>
 
       <section className="tn-partners" id="partenaires" data-reveal data-reveal-direction="left">
-        <div className="tn-section-heading"><div><span>ILS NOUS FONT CONFIANCE</span><h2>Nos partenaires</h2></div><p>Des partenaires institutionnels et privés qui accompagnent nos activités.</p></div>
-        <div className="tn-partners__viewport" role="region" aria-label="Partenaires TN Services" aria-roledescription="bande défilante"><div className="tn-partners__track"><PartnerGroup /><PartnerGroup duplicate /></div></div>
+        <div className="tn-section-heading"><div><span>{t('home.trusted', 'ILS NOUS FONT CONFIANCE')}</span><h2>{t('home.partnersTitle', 'Nos partenaires')}</h2></div><p>{t('home.partnersDescription', 'Des partenaires institutionnels et prives qui soutiennent nos activites.')}</p></div>
+        <div className="tn-partners__viewport" role="region" aria-label={t('home.partnersAria', 'Partenaires TN Services')} aria-roledescription={t('home.marquee', 'bande defilante')}><div className="tn-partners__track"><PartnerGroup /><PartnerGroup duplicate /></div></div>
       </section>
     </div>
   )
