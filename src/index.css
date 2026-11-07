@@ -147,6 +147,7 @@ html[data-theme='dark'] .tn-simple-page .tn-branch-card:hover { border-color:rgb
 html[data-theme='dark'] .tn-simple-page .tn-branch-card:hover h2 { color:#a9e5ff; }
 html[data-theme='dark'] .tn-simple-page h1,
 html[data-theme='dark'] .tn-simple-page h2 { color:#edf5f9; }
+.tn-simple-page .tn-branch-card img { height:140px; max-width:100%; object-fit:contain; object-position:center; }
 
 h1,
 h2 {

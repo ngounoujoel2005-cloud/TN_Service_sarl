@@ -25,39 +25,39 @@ import './InternationalTrainingCenter.css'
 const missions = [
   {
     Icon: CarFront,
-    title: 'Formation à toutes les catégories de permis',
-    text: 'Cours théoriques de code et formation pratique pour les motos, les véhicules légers (catégorie B), les poids lourds et le transport en commun.',
-    titleEn: 'Training for every licence category',
-    textEn: 'Road theory and practical lessons for motorcycles, light vehicles (category B), heavy goods vehicles, and public transport.',
-    tag: 'Théorie & pratique',
-    tagEn: 'Theory & practice',
+    title: 'Cours d’auto-école et préparation au permis',
+    text: 'Cours de code et leçons pratiques pour les permis des catégories A, B, C, D et E, avec préparation aux examens.',
+    titleEn: 'Driving lessons and licence preparation',
+    textEn: 'Theory and practical driving lessons for licence categories A, B, C, D, and E, with exam preparation.',
+    tag: 'Code · Conduite',
+    tagEn: 'Theory · Driving',
   },
   {
     Icon: FileCheck2,
-    title: 'Accompagnement jusqu’à la délivrance du permis',
-    text: 'Prise en charge intégrale du dossier administratif, depuis l’inscription jusqu’à la réussite aux examens et à la remise effective du permis.',
-    titleEn: 'Support through to licence delivery',
-    textEn: 'Help with your administrative file, from initial registration through the exams and delivery of your driving licence.',
-    tag: 'Dossier complet',
-    tagEn: 'Full support',
+    title: 'Accompagnement pour la production du permis',
+    text: 'Aide pour préparer et suivre le dossier administratif lié à la production et à l’obtention du permis de conduire.',
+    titleEn: 'Support with driving licence issuance',
+    textEn: 'Help preparing and following the administrative file for the issuance and acquisition of a driving licence.',
+    tag: 'Dossier · Permis',
+    tagEn: 'Application · Licence',
   },
   {
     Icon: UserRoundCheck,
-    title: 'Encadrement pédagogique personnalisé',
-    text: 'Des formateurs certifiés assurent un suivi individuel pour corriger les lacunes, développer les réflexes de sécurité et préparer la réussite dès la première présentation.',
-    titleEn: 'Personalized driving instruction',
-    textEn: 'Certified instructors provide individual guidance, help address learning gaps, and build safe driving habits.',
-    tag: 'Suivi individuel',
-    tagEn: 'One-to-one guidance',
+    title: 'Recyclage et perfectionnement',
+    text: 'Des séances de remise à niveau pour les conducteurs déjà titulaires d’un permis qui souhaitent gagner en maîtrise et en confiance.',
+    titleEn: 'Refresher lessons and advanced practice',
+    textEn: 'Refresher sessions for licensed drivers who want to strengthen their driving skills and confidence.',
+    tag: 'Plus de maîtrise',
+    tagEn: 'Build your confidence',
   },
   {
     Icon: RefreshCw,
-    title: 'Recyclage et perfectionnement',
-    text: 'Des séances de remise à niveau aident les conducteurs déjà titulaires du permis à gagner en confiance et à perfectionner leur conduite.',
-    titleEn: 'Refresher and advanced lessons',
-    textEn: 'Refresher sessions help licensed drivers build confidence and strengthen their driving skills.',
-    tag: 'Confiance au volant',
-    tagEn: 'Driving confidence',
+    title: 'Renouvellement du permis',
+    text: 'Accompagnement dans les démarches et la préparation des pièces nécessaires au renouvellement du permis de conduire.',
+    titleEn: 'Driving licence renewal',
+    textEn: 'Guidance with the process and documents needed to renew a driving licence.',
+    tag: 'Démarches de renouvellement',
+    tagEn: 'Renewal process',
   },
 ]
 
@@ -137,8 +137,8 @@ export default function DriveProAcademy() {
           <h1>{name}</h1>
           <p className="tn-itc-hero__motto">{isEnglish ? 'Drive today, succeed tomorrow.' : 'Conduire aujourd’hui, réussir demain.'}</p>
           <p className="tn-itc-hero__intro">{isEnglish
-            ? 'DrivePro Academy is a modern driving school committed to preparing responsible, safe drivers for the road. Learn with certified instructors, individual guidance, and a schedule shaped around your availability.'
-            : 'DrivePro Academy est une auto-école moderne qui forme des conducteurs responsables, sûrs et préparés aux exigences de la route. Bénéficiez de formateurs certifiés, d’un suivi individuel et d’un emploi du temps adapté à vos disponibilités.'}</p>
+            ? 'DrivePro Academy offers driving lessons, support with driving licence issuance and renewal, and refresher training for licensed drivers seeking greater confidence and control.'
+            : 'DrivePro Academy propose des cours d’auto-école, un accompagnement pour la production et le renouvellement du permis, ainsi que des séances de recyclage pour les conducteurs qui veulent gagner en maîtrise.'}</p>
           <div className="tn-itc-hero__actions">
             <Link to="/contact" className="tn-itc-primary">{isEnglish ? 'Plan your training' : 'Organiser ma formation'}<ArrowRight size={18} /></Link>
             <a href="#drivepro-missions" className="tn-itc-secondary">{isEnglish ? 'Explore our training' : 'Découvrir nos formations'}</a>

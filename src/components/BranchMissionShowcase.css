@@ -88,3 +88,5 @@ html[data-theme='dark'] .tn-itc-page .tn-mission-showcase { border-color:color-m
 @media (prefers-reduced-motion: reduce) {
   .tn-mission-showcase__visual::before,.tn-mission-showcase__orb-glow,.tn-mission-showcase__orb,.tn-mission-showcase__satellite { animation:none; }
 }
+.tn-mission-showcase__orb-core { width:65%; height:49%; }
+.tn-mission-showcase__orb-core img { width:92%; height:88%; }

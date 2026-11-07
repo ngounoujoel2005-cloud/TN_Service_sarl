@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   ArrowRight,
   BadgeCheck,
+  BriefcaseBusiness,
   CalendarClock,
   CheckCircle2,
   Clock3,
@@ -11,10 +12,8 @@ import {
   Globe2,
   HandCoins,
   LockKeyhole,
-  MapPinned,
   Plane,
   ShieldCheck,
-  TicketCheck,
 } from 'lucide-react'
 import travelLogo from '../assets/travel-tours-logo.jpeg'
 import travelPhoto from '../assets/filiales/voyage-international.jpg'
@@ -26,39 +25,39 @@ import './InternationalTrainingCenter.css'
 const missions = [
   {
     Icon: Globe2,
-    title: 'Procédures d’immigration légale',
-    text: 'Un accompagnement juridique et administratif adapté à vos projets d’études, de travail, de regroupement familial ou d’installation à l’étranger.',
-    titleEn: 'Legal immigration procedures',
-    textEn: 'Tailored legal and administrative guidance for study, work, family reunification, or permanent relocation plans.',
-    tag: 'Mobilité',
-    tagEn: 'Mobility',
+    title: 'Canada : visas pour vos projets',
+    text: 'Accompagnement pour les visas de travail, d’études, de résidence et de tourisme au Canada.',
+    titleEn: 'Canada: visas for your plans',
+    textEn: 'Guidance with work, study, residence, and visitor visa applications for Canada.',
+    tag: 'Canada',
+    tagEn: 'Canada',
   },
   {
     Icon: FileCheck2,
-    title: 'Assistance visa et passeport',
-    text: 'Préparation rigoureuse des dossiers, prise de rendez-vous et préparation aux entretiens consulaires pour maximiser vos chances d’obtention du visa.',
-    titleEn: 'Visa and passport assistance',
-    textEn: 'Careful file preparation, appointment booking, and consular interview preparation to present your application clearly.',
-    tag: 'Démarches',
-    tagEn: 'Applications',
+    title: 'Espace Schengen',
+    text: 'Accompagnement pour les visas de travail, d’études et de tourisme dans l’espace Schengen.',
+    titleEn: 'Schengen area',
+    textEn: 'Guidance with work, study, and visitor visa applications for the Schengen area.',
+    tag: 'Europe',
+    tagEn: 'Europe',
   },
   {
-    Icon: TicketCheck,
-    title: 'Billetterie et réservations',
-    text: 'Billets d’avion aux meilleurs tarifs, réservations hôtelières et planification logistique pour organiser vos déplacements de bout en bout.',
-    titleEn: 'Tickets and reservations',
-    textEn: 'Air tickets, hotel bookings, and travel logistics to help organize your trip from start to finish.',
-    tag: 'Voyages',
-    tagEn: 'Travel',
+    Icon: BriefcaseBusiness,
+    title: 'Dubaï : travail et tourisme',
+    text: 'Information et accompagnement pour préparer vos démarches de visa de travail ou de tourisme à Dubaï.',
+    titleEn: 'Dubai: work and tourism',
+    textEn: 'Information and guidance to prepare work or visitor visa applications for Dubai.',
+    tag: 'Dubaï',
+    tagEn: 'Dubai',
   },
   {
-    Icon: MapPinned,
-    title: 'Conseil et orientation stratégique',
-    text: 'Une évaluation personnalisée de votre profil pour étudier les destinations et les voies d’accès correspondant à votre situation.',
-    titleEn: 'Advice and strategic guidance',
-    textEn: 'A personalized profile review to explore destinations and application pathways suited to your circumstances.',
-    tag: 'Votre projet',
-    tagEn: 'Your plans',
+    Icon: Plane,
+    title: 'Chine : études et tourisme',
+    text: 'Accompagnement pour les demandes de visa d’études et de tourisme pour la Chine.',
+    titleEn: 'China: study and tourism',
+    textEn: 'Guidance with study and visitor visa applications for China.',
+    tag: 'Chine',
+    tagEn: 'China',
   },
 ]
 
@@ -138,8 +137,8 @@ export default function TravelTours() {
           <h1>{name}</h1>
           <p className="tn-itc-hero__motto">{isEnglish ? 'Speak the world. Work anywhere.' : 'Parlez au monde, travaillez partout.'}</p>
           <p className="tn-itc-hero__intro">{isEnglish
-            ? 'TN Travel & Tours helps you plan international travel and mobility projects. From visa applications to tickets and accommodation, our team guides you through the steps of your journey.'
-            : 'TN Travel & Tours vous accompagne dans la concrétisation de vos projets de mobilité internationale. Des démarches de visa aux billets et réservations, notre équipe vous guide à chaque étape de votre voyage.'}</p>
+            ? 'TN Travel & Tours supports your international travel plans with destination-specific visa guidance for Canada, the Schengen area, Dubai, and China, as well as ticketing and travel planning.'
+            : 'TN Travel & Tours vous accompagne dans vos projets de mobilité avec des démarches de visa adaptées à chaque destination : Canada, espace Schengen, Dubaï et Chine, ainsi que la billetterie et la préparation de voyage.'}</p>
           <div className="tn-itc-hero__actions">
             <Link to="/contact" className="tn-itc-primary">{isEnglish ? 'Discuss your travel plans' : 'Parler de votre projet de voyage'}<ArrowRight size={18} /></Link>
             <a href="#travel-missions" className="tn-itc-secondary">{isEnglish ? 'Explore our services' : 'Découvrir nos services'}</a>
@@ -154,7 +153,7 @@ export default function TravelTours() {
       <BranchMissionShowcase
         id="travel-missions"
         eyebrow={isEnglish ? 'OUR EXPERTISE' : 'NOTRE SAVOIR-FAIRE'}
-        heading={isEnglish ? 'Our missions and services' : 'Nos missions et attributions'}
+        heading={isEnglish ? 'Visa services by destination' : 'Nos visas selon votre destination'}
         missions={missions}
         logo={travelLogo}
         isEnglish={isEnglish}

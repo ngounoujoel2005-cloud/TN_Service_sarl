@@ -8,7 +8,6 @@ import {
   BriefcaseBusiness,
   CalendarClock,
   CalendarDays,
-  Compass,
   FileCheck2,
   GraduationCap,
   Languages,
@@ -26,39 +25,39 @@ import './InternationalTrainingCenter.css'
 const missions = [
   {
     Icon: Languages,
-    title: 'Formation et certification linguistique',
-    text: 'Des parcours de langues vivantes et professionnelles, conçus pour tous les niveaux et tournés vers les études et le monde du travail.',
-    titleEn: 'Language training and certification',
-    textEn: 'Modern and professional language courses for every level, supporting international study and career opportunities.',
-    tag: 'Langues vivantes',
-    tagEn: 'Languages',
-  },
-  {
-    Icon: Laptop,
-    title: 'Maintenance et ingénierie informatique',
-    text: 'Apprenez la maintenance matérielle et logicielle, la configuration des réseaux et le diagnostic des pannes informatiques.',
-    titleEn: 'IT maintenance and engineering',
-    textEn: 'Learn hardware and software maintenance, network setup, and practical computer troubleshooting.',
-    tag: 'Informatique',
-    tagEn: 'Information technology',
+    title: 'Langues et préparation au TCF',
+    text: 'Cours d’allemand, d’italien, d’anglais, de chinois et de français : 25 000 à 50 000 F. Préparation au TCF : 50 000 F par mois.',
+    titleEn: 'Languages and TCF preparation',
+    textEn: 'German, Italian, English, Chinese, and French courses: CFA 25,000–50,000. TCF preparation: CFA 50,000 per month.',
+    tag: '25 000–50 000 F · TCF 50 000 F/mois',
+    tagEn: 'CFA 25,000–50,000 · TCF CFA 50,000/month',
   },
   {
     Icon: BriefcaseBusiness,
-    title: 'Diversification des compétitions et formations métiers',
-    text: 'Un choix de formations qualifiantes et certifiantes, adapté aux compétences recherchées sur le marché du travail.',
-    titleEn: 'Vocational and professional training',
-    textEn: 'A range of qualifying and certified courses shaped around skills in demand in today’s job market.',
-    tag: 'Compétences pro',
-    tagEn: 'Career skills',
+    title: 'Secrétariat et outils professionnels',
+    text: 'Des cours de secrétariat pour acquérir les méthodes et les outils utiles au travail de bureau. Tarif : 30 000 à 50 000 F.',
+    titleEn: 'Secretarial skills and professional tools',
+    textEn: 'Secretarial courses covering practical methods and tools for office work. Fees: CFA 30,000–50,000.',
+    tag: '30 000–50 000 F',
+    tagEn: 'CFA 30,000–50,000',
   },
   {
-    Icon: Compass,
-    title: 'Accompagnement et orientation',
-    text: 'Un suivi personnalisé aide chaque apprenant à relier ses compétences à ses objectifs professionnels ou académiques.',
-    titleEn: 'Guidance and personal support',
-    textEn: 'Personal guidance helps each learner connect their skills with their academic and career goals.',
-    tag: 'Suivi personnalisé',
-    tagEn: 'Personal guidance',
+    Icon: Laptop,
+    title: 'Maintenance, réseaux, sécurité et IA',
+    text: 'Formations en maintenance informatique, réseaux, sécurité informatique et utilisation de l’intelligence artificielle. Tarif : 30 000 à 50 000 F.',
+    titleEn: 'Maintenance, networks, security, and AI',
+    textEn: 'Courses in computer maintenance, networking, information security, and practical use of artificial intelligence. Fees: CFA 30,000–50,000.',
+    tag: '30 000–50 000 F',
+    tagEn: 'CFA 30,000–50,000',
+  },
+  {
+    Icon: CalendarDays,
+    title: 'Cours de vacances pour enfants',
+    text: 'Des sessions organisées pendant les vacances pour accompagner les enfants dans leurs apprentissages. Tarif : 15 000 F.',
+    titleEn: 'School-holiday courses for children',
+    textEn: 'Learning sessions during school holidays to support children’s progress. Fee: CFA 15,000.',
+    tag: '15 000 F',
+    tagEn: 'CFA 15,000',
   },
 ]
 
@@ -138,8 +137,8 @@ export default function InternationalTrainingCenter({ branch }) {
           <h1>{name}</h1>
           <p className="tn-itc-hero__motto">{isEnglish ? 'Speak the world. Work anywhere.' : 'Parlez au monde, travaillez partout.'}</p>
           <p className="tn-itc-hero__intro">{isEnglish
-            ? 'Build practical skills for your next step. Our flexible courses bring together languages, information technology, and professional development, with guidance throughout your learning journey.'
-            : 'Institut polyvalent et dynamique, l’International Training Center développe des compétences concrètes pour les études et l’emploi. Nos formations réunissent les langues, l’informatique et les métiers, avec un accompagnement personnalisé à chaque étape.'}</p>
+            ? 'Build practical skills with language courses, TCF preparation, secretarial training, computer maintenance, networks, security, and AI. Course fees range from CFA 25,000 to CFA 50,000, with holiday courses for children at CFA 15,000.'
+            : 'L’International Training Center propose des cours de langues, une préparation au TCF, du secrétariat, de la maintenance informatique, des réseaux, de la sécurité et de l’IA. Les tarifs vont de 25 000 à 50 000 F, avec des cours de vacances pour enfants à 15 000 F.'}</p>
           <div className="tn-itc-hero__actions">
             <Link to="/contact" className="tn-itc-primary">{isEnglish ? 'Talk to an adviser' : 'Parler à un conseiller'}<ArrowRight size={18} /></Link>
             <a href="#missions" className="tn-itc-secondary">{isEnglish ? 'Explore our programs' : 'Découvrir nos formations'}</a>

@@ -125,3 +125,16 @@ export default function Index() {
     </>
   )
 }
+// bon je vais te faire une liste des modification que tu vas apporter au site web tu vas les faire de maniere progressif sur le site pour qu'il soit bien fait et bien structurer 
+// 1- pour tn travael & tours : il offres des visa travail,etude, residence et tourisme pour l canada ,et travail,etude tourisme pour schengen, et travail,tourisme pour dubaii, etude tourisme pour la chine 
+// 2- pour tninternational training center : ont offre des cours d'allemende , italie,anglais,chinoi,francais les cours vont de 25.000 a 50.000; les cours pour le TCF coute 50.000 le mois ,pour les cours de sequetaria, maintenance informatique reseau et securiter ,utilisation de l'IA coute de 30.000 a 50.000 et les cours de vacanses pour les enfants coute 15.000 (la reduction pour les etudiant est toujours la avec les condition dit)
+// 3- pour TN gestion et filcaliter : creation d'entrprise,encompagnement entreprenarial, immatriculation , accompagnement cnps, tsf declaration ,caisse et POS(informatisation et gestion)
+// 4- pour tn drive academy : production de permis , cours d'auto ecole, reciclage de formation(a un permis mais veut plus de metrise), renouvellement de permis 
+// 5- pour lorena : ajoute que les livraisons se font a domicile a douala et yaounde uniquement et aussi patout dans le cameroun par espedition 
+// pour les partenais suprime celui de super car et RSSM contruction , modifi le nom de kremlin juste par "kremelin medical ", pour CGA le bon nom et nom complet est "CGA NMEC consulting"
+// 5- les modification site dans se point doivent etre effectuer uniquement sur la pages d'accuille : 
+// - sur la filiale sur gestion et fiscaliter retire "POS" sur cette image
+// - sur le premier div de  la pages d'accuille qui affiche en premier en dessous de la nav bar , je veut que cette div sens retire l'animation et l'effet qui est decu que tu la fasse defiler de la droite vers la gauche puis la gauche vers la droite et afficher les information en premier lieu de celle qui est deja la puis la deuxieme celle de la premier div de la filiale gestion et ficaliter, la troixieme celle de la filiale training center la quatrierme celle de l'imigration, la cinquime celle de auto ecole , je precise bien que les animation de trasition des div la ne se font pas sur les image donc pas seulement les image mais toute la duv directement avec se qu'elle contient donc tu genre l'iamge et le test en gardans les effets et les couleur donc juste les faire defiler
+// 6- sur toute mes pages tout les logos des partenaire ne sont pas bien alligner et il deborde legerement de leur element donc il faut tout ses logo soit bien centre visible et situer dans leur cadre sens deborder 
+// 7-je veut aussi que le logo de toutes les filiale soit un peut plus grand pour une meille visibiler de leurs logo donc image 
+// 8- les images que je vien de telverser tu vas les utilise comme images sur la presentation des filiale uniquement sur la pages d'accuille , donc tu rappel les images sur la presentation de filiale sur la pages d'accuille par celle aue je vein de televerse

@@ -296,3 +296,6 @@ html[data-theme='dark'] .tn-lorena-page .tn-itc-bottom-nav a,html[data-theme='da
 .tn-drivepro-page .tn-itc-learning__visual img { position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; max-width:100%; object-fit:cover; object-position:center 55%; }
 .tn-lorena-page .tn-itc-hero__photo img { position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; max-width:100%; object-fit:cover; object-position:center 34%; }
 .tn-lorena-page .tn-itc-learning__visual img { position:absolute; top:0; right:0; bottom:0; left:0; width:100%; height:100%; max-width:100%; object-fit:cover; object-position:center; }
+
+.tn-itc-hero__brand > span:first-child { width:58px; height:58px; }
+.tn-itc-hero__brand img { object-fit:contain; }

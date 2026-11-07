@@ -8,9 +8,7 @@ import cnpsLogo from '../assets/partner-cnps.jpg'
 import ecobankLogo from '../assets/partner-ecobank.jpg'
 import kremlinLogo from '../assets/partner-kremlin.jpg'
 import allInOneLogo from '../assets/partner-all-in-one.jpeg'
-import rccmLogo from '../assets/partner-rccm.png'
 import starTimesLogo from '../assets/partner-startimes-alt.png'
-import superCargoLogo from '../assets/partner-super-cargo.png'
 import './A-propos.css'
 
 /* ------------------------------------------------------------------
@@ -31,38 +29,38 @@ const STATS = [
 const SERVICES = [
   {
     key: "itc", icon: "cap", tagFr: "Formation", tagEn: "Training", title: "International Training Center",
-    textFr: "Des formations certifiantes en informatique et en langues pour développer vos compétences et préparer votre avenir professionnel.",
-    textEn: "Certified IT and language courses to build your skills and prepare for your professional future.",
-    pointsFr: ["Informatique et maintenance", "Langues vivantes", "Accompagnement des apprenants"],
-    pointsEn: ["IT and computer maintenance", "Modern languages", "Learner guidance"],
+    textFr: "Des cours d’allemand, d’italien, d’anglais, de chinois et de français, ainsi que des formations professionnelles et une préparation au TCF.",
+    textEn: "German, Italian, English, Chinese, and French courses, alongside professional training and TCF preparation.",
+    pointsFr: ["Langues : 25 000 à 50 000 F", "TCF : 50 000 F par mois", "Cours professionnels et vacances"],
+    pointsEn: ["Languages: CFA 25,000–50,000", "TCF: CFA 50,000 per month", "Professional and holiday courses"],
   },
   {
     key: "travel", icon: "plane", tagFr: "Voyage & mobilité", tagEn: "Travel & mobility", title: "TN Travel & Tours",
-    textFr: "Assistance pour vos démarches de visa et passeport, vos billets d’avion et la préparation de vos projets de voyage.",
-    textEn: "Support with visa and passport applications, air tickets, and planning your travel projects.",
-    pointsFr: ["Assistance visa", "Billetterie et réservations", "Conseils personnalisés"],
-    pointsEn: ["Visa assistance", "Tickets and reservations", "Personalized guidance"],
+    textFr: "Accompagnement pour les visas du Canada, de l’espace Schengen, de Dubaï et de la Chine, ainsi que pour la billetterie et la préparation du voyage.",
+    textEn: "Visa guidance for Canada, the Schengen area, Dubai, and China, along with ticketing and travel planning.",
+    pointsFr: ["Visas selon la destination", "Billetterie et réservations", "Conseils personnalisés"],
+    pointsEn: ["Destination-specific visas", "Tickets and reservations", "Personalized guidance"],
   },
   {
     key: "gestion", icon: "calc", tagFr: "Gestion & fiscalité", tagEn: "Accounting & tax", title: "TN Gestion & Fiscalité",
-    textFr: "Un accompagnement comptable, fiscal et administratif pour créer votre entreprise et piloter votre activité sereinement.",
-    textEn: "Accounting, tax, and administrative support to set up your business and manage it with confidence.",
-    pointsFr: ["Création d’entreprise en 72 h", "Comptabilité et fiscalité", "Solutions de caisse POS"],
-    pointsEn: ["Business setup in 72 hours", "Accounting and tax support", "POS solutions"],
+    textFr: "Un accompagnement entrepreneurial pour la création et l’immatriculation, les dossiers CNPS, les déclarations TSF et la gestion des caisses/POS.",
+    textEn: "Entrepreneurial support with business creation and registration, CNPS files, TSF declarations, and cash register/POS management.",
+    pointsFr: ["Création et immatriculation", "CNPS et déclarations TSF", "Caisses et systèmes POS"],
+    pointsEn: ["Business setup and registration", "CNPS and TSF declarations", "Cash registers and POS systems"],
   },
   {
     key: "drivepro", icon: "car", tagFr: "Auto-école", tagEn: "Driving school", title: "DrivePro Academy",
-    textFr: "Une formation théorique et pratique à la conduite, avec un suivi pédagogique et une piste dédiée à Yassa.",
-    textEn: "Theory and practical driving lessons with personal guidance and a dedicated practice track in Yassa.",
-    pointsFr: ["Préparation à plusieurs permis", "Formateurs qualifiés", "Piste de conduite à Yassa"],
-    pointsEn: ["Training for multiple licence classes", "Qualified instructors", "Driving track in Yassa"],
+    textFr: "Des cours d’auto-école, un accompagnement pour la production et le renouvellement du permis, et des séances de recyclage.",
+    textEn: "Driving lessons, support with licence issuance and renewal, and refresher sessions.",
+    pointsFr: ["Cours de conduite", "Production et renouvellement du permis", "Recyclage et perfectionnement"],
+    pointsEn: ["Driving lessons", "Licence issuance and renewal", "Refresher and advanced lessons"],
   },
   {
     key: "lorena", icon: "bag", tagFr: "E-commerce", tagEn: "E-commerce", title: "Lorena E-Commerce",
-    textFr: "Une boutique en ligne de produits variés, avec commande simple, livraison à Douala et accompagnement après-vente.",
-    textEn: "An online store with a varied range, simple ordering, delivery in Douala, and after-sales support.",
-    pointsFr: ["Produits multi-catégories", "Livraison à Douala", "Suivi après-vente"],
-    pointsEn: ["Products across categories", "Delivery in Douala", "After-sales support"],
+    textFr: "Une boutique en ligne avec livraison à domicile à Douala et Yaoundé, et expédition dans les autres villes du Cameroun.",
+    textEn: "An online store with home delivery in Douala and Yaoundé, and shipping to other destinations in Cameroon.",
+    pointsFr: ["Produits multi-catégories", "Livraison Douala et Yaoundé", "Expédition au Cameroun"],
+    pointsEn: ["Products across categories", "Douala and Yaoundé delivery", "Shipping across Cameroon"],
   },
 ];
 
@@ -83,14 +81,12 @@ const VALUES = [
 const PARTNERS = [
   { name: 'AFG Capital', image: afgLogo },
   { name: 'CANAL+', image: canalLogo },
-  { name: 'CGAM Consulting', image: cgamLogo },
+  { name: 'CGA NMEC Consulting', image: cgamLogo },
   { name: 'CNPS', image: cnpsLogo },
   { name: 'Ecobank', image: ecobankLogo },
-  { name: 'Kremlin Medical & Surgical Centre', image: kremlinLogo },
+  { name: 'Kremelin Medical', image: kremlinLogo },
   { name: 'All in One Business and Services', image: allInOneLogo },
-  { name: 'RCCM Construction & Consulting', image: rccmLogo },
   { name: 'StarTimes', image: starTimesLogo },
-  { name: 'Super Cargo Service', image: superCargoLogo },
 ];
 
 const MARQUEE = {

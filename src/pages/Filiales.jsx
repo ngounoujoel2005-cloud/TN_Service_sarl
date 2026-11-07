@@ -12,11 +12,11 @@ import DriveProAcademy from './DriveProAcademy.jsx'
 import LorenaStore from './LorenaStore.jsx'
 
 const filiales = [
-  { slug: 'itc', name: 'International Training Center', description: 'Formations certifiantes en informatique et en langues.', image: itcLogo },
-  { slug: 'travel', name: 'TN Travel & Tours', description: 'Accompagnement pour vos visas et billets d’avion.', image: travelLogo },
-  { slug: 'gestion', name: 'TN Gestion & Fiscalité', description: 'Conseil en gestion et solutions de caisse POS.', image: gestionLogo },
-  { slug: 'drivepro', name: 'DrivePro Academy', description: 'Formation à la conduite et préparation aux permis.', image: driveproLogo },
-  { slug: 'lorena', name: 'Lorena E-Commerce', description: 'Une sélection de produits et services en ligne.', image: lorenaLogo },
+  { slug: 'itc', name: 'International Training Center', description: 'Langues : 25 000 à 50 000 F ; TCF : 50 000 F par mois ; formations professionnelles et cours de vacances pour enfants.', image: itcLogo },
+  { slug: 'travel', name: 'TN Travel & Tours', description: 'Visas pour le Canada, Schengen, Dubaï et la Chine, plus billetterie et accompagnement au voyage.', image: travelLogo },
+  { slug: 'gestion', name: 'TN Gestion & Fiscalité', description: 'Création et immatriculation, accompagnement entrepreneurial, CNPS, TSF, caisses et systèmes POS.', image: gestionLogo },
+  { slug: 'drivepro', name: 'DrivePro Academy', description: 'Cours d’auto-école, accompagnement pour le permis, renouvellement et recyclage.', image: driveproLogo },
+  { slug: 'lorena', name: 'Lorena E-Commerce', description: 'Boutique en ligne avec livraison à domicile à Douala et Yaoundé et expédition dans le reste du Cameroun.', image: lorenaLogo },
 ]
 
 export default function Filiales() {

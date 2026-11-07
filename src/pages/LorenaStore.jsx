@@ -47,9 +47,9 @@ const missions = [
   {
     Icon: Truck,
     title: 'Livraison rapide et sécurisée',
-    text: 'Vos commandes sont expédiées à domicile ou à l’adresse de votre choix avec un traitement rapide et soigné.',
+    text: 'Livraison à domicile à Douala et Yaoundé. Partout ailleurs au Cameroun, les commandes sont envoyées par expédition.',
     titleEn: 'Fast, secure delivery',
-    textEn: 'Orders are sent to your home or an address of your choice, with prompt and careful handling.',
+    textEn: 'Home delivery is available in Douala and Yaoundé. Orders for other parts of Cameroon are sent by shipment.',
     tag: 'La sérénité',
     tagEn: 'Peace of mind',
   },
@@ -140,8 +140,8 @@ export default function LorenaStore() {
           <h1>LORENA</h1>
           <p className="tn-itc-hero__motto">{isEnglish ? 'Choice, quality, and peace of mind at the best price.' : 'Le choix, la qualité et la sérénité au meilleur prix.'}</p>
           <p className="tn-itc-hero__intro">{isEnglish
-            ? 'Lorena is an online store designed to make shopping easy, reliable, and accessible. Explore products for home, work, and everyday life, with convenient ordering and delivery.'
-            : 'LORENA est une plateforme de vente en ligne conçue pour vous offrir une expérience d’achat fluide, fiable et accessible. Retrouvez des produits pour la maison, le travail et le quotidien, avec une commande et une livraison pratiques.'}</p>
+            ? 'Lorena is an online store designed to make shopping easy and reliable. Orders are delivered to homes in Douala and Yaoundé, and shipped to other destinations across Cameroon.'
+            : 'LORENA est une plateforme de vente en ligne conçue pour vous offrir une expérience d’achat simple et fiable. Les commandes sont livrées à domicile à Douala et Yaoundé, et expédiées partout ailleurs au Cameroun.'}</p>
           <div className="tn-itc-hero__actions">
             <a href="https://www.lorena.cm" className="tn-itc-primary" target="_blank" rel="noreferrer">{isEnglish ? 'Visit the Lorena store' : 'Visiter la boutique Lorena'}<ArrowRight size={18} /></a>
             <a href="#lorena-missions" className="tn-itc-secondary">{isEnglish ? 'Explore our services' : 'Découvrir nos services'}</a>
@@ -176,7 +176,7 @@ export default function LorenaStore() {
           <div className="tn-itc-hours">
             <div className="tn-itc-hours__item"><span><ShoppingBag size={18} /></span><div><strong>{isEnglish ? 'Browse the catalog' : 'Parcourez le catalogue'}</strong><small>{isEnglish ? 'Find items across categories' : 'Trouvez vos articles par catégorie'}</small></div></div>
             <div className="tn-itc-hours__item"><span><CreditCard size={18} /></span><div><strong>{isEnglish ? 'Place your order' : 'Passez votre commande'}</strong><small>{isEnglish ? 'Choose your preferred payment method' : 'Choisissez le mode de paiement adapté'}</small></div></div>
-            <div className="tn-itc-hours__item"><span><House size={18} /></span><div><strong>{isEnglish ? 'Receive your delivery' : 'Recevez votre livraison'}</strong><small>{isEnglish ? 'At home or your chosen address' : 'À domicile ou à l’adresse de votre choix'}</small></div></div>
+            <div className="tn-itc-hours__item"><span><House size={18} /></span><div><strong>{isEnglish ? 'Receive your delivery' : 'Recevez votre commande'}</strong><small>{isEnglish ? 'Home delivery in Douala and Yaoundé; shipment elsewhere in Cameroon' : 'À domicile à Douala et Yaoundé ; expédition dans le reste du Cameroun'}</small></div></div>
           </div>
           <div className="tn-itc-schedule-note"><Truck size={18} /><span>{isEnglish ? 'Orders are processed promptly and delivered with care.' : 'Les commandes sont traitées rapidement et livrées avec soin.'}</span></div>
         </div>
@@ -199,7 +199,7 @@ export default function LorenaStore() {
           </article>
           <article className="tn-lorena-gallery__card" data-reveal data-reveal-direction="right">
             <div className="tn-lorena-gallery__visual"><img src={deliveryPhoto} alt={isEnglish ? 'A delivery center prepared for dispatching orders' : 'Un centre de livraison prêt à expédier les commandes'} /></div>
-            <div className="tn-lorena-gallery__copy"><span><Truck size={17} /></span><div><h3>{isEnglish ? 'Delivery with care' : 'Une livraison soignée'}</h3><p>{isEnglish ? 'Orders are prepared and sent to your home or chosen address.' : 'Les commandes sont préparées puis envoyées à domicile ou à l’adresse de votre choix.'}</p></div></div>
+            <div className="tn-lorena-gallery__copy"><span><Truck size={17} /></span><div><h3>{isEnglish ? 'Delivery with care' : 'Une livraison soignée'}</h3><p>{isEnglish ? 'Home delivery in Douala and Yaoundé, with shipment to the rest of Cameroon.' : 'Livraison à domicile à Douala et Yaoundé, avec expédition dans le reste du Cameroun.'}</p></div></div>
           </article>
         </div>
       </section>

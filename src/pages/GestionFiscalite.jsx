@@ -11,7 +11,6 @@ import {
   FileCheck2,
   FileText,
   ReceiptText,
-  Scale,
   ShieldCheck,
   UserRoundCheck,
 } from 'lucide-react'
@@ -25,39 +24,39 @@ import './InternationalTrainingCenter.css'
 const missions = [
   {
     Icon: Building2,
-    title: 'Création d’entreprise express (72 h)',
-    text: 'Prise en charge intégrale de votre dossier, de sa constitution à la délivrance des documents officiels, dans un délai garanti de 72 heures de A à Z.',
-    titleEn: 'Express business setup (72 hours)',
-    textEn: 'Full support with your company file, from preparation through the delivery of official documents, with a guaranteed 72-hour turnaround.',
-    tag: 'Création',
-    tagEn: 'Company setup',
+    title: 'Création d’entreprise et immatriculation',
+    text: 'Accompagnement dans la création et l’immatriculation de votre entreprise, de la préparation du dossier aux formalités administratives.',
+    titleEn: 'Business creation and registration',
+    textEn: 'Support with setting up and registering your business, from preparing the file through the administrative steps.',
+    tag: 'Création · Immatriculation',
+    tagEn: 'Company setup · Registration',
   },
   {
-    Icon: Calculator,
-    title: 'Conseil et optimisation fiscale',
-    text: 'Analyse de votre situation pour appliquer la fiscalité la plus avantageuse, calculer vos impôts avec exactitude et sécuriser vos déclarations.',
-    titleEn: 'Tax advice and planning',
-    textEn: 'Review of your situation to identify suitable tax options, calculate your taxes accurately, and secure your tax returns.',
-    tag: 'Fiscalité',
-    tagEn: 'Tax support',
+    Icon: UserRoundCheck,
+    title: 'Accompagnement entrepreneurial',
+    text: 'Conseils pratiques et suivi pour structurer votre activité, organiser sa gestion et avancer à chaque étape de votre projet.',
+    titleEn: 'Entrepreneurial guidance',
+    textEn: 'Practical advice and support to structure your business, organize its management, and move your project forward.',
+    tag: 'Conseil aux entreprises',
+    tagEn: 'Business support',
+  },
+  {
+    Icon: FileCheck2,
+    title: 'Accompagnement CNPS et déclarations TSF',
+    text: 'Aide à la constitution et au suivi des dossiers CNPS, ainsi qu’à la préparation et au dépôt des déclarations TSF.',
+    titleEn: 'CNPS support and TSF declarations',
+    textEn: 'Help preparing and following CNPS files, as well as preparing and submitting TSF declarations.',
+    tag: 'CNPS · TSF',
+    tagEn: 'CNPS · TSF',
   },
   {
     Icon: ReceiptText,
-    title: 'Gestion comptable et audits',
-    text: 'Tenue et vérification de la comptabilité, préparation des états financiers et audit interne pour suivre la santé financière de votre activité.',
-    titleEn: 'Accounting and audits',
-    textEn: 'Bookkeeping and reviews, preparation of financial statements, and internal audits to monitor your business finances.',
-    tag: 'Comptabilité',
-    tagEn: 'Accounting',
-  },
-  {
-    Icon: Scale,
-    title: 'Accompagnement administratif et juridique',
-    text: 'Gestion des formalités réglementaires, rédaction de contrats et préparation de dossiers de conformité fiscale pour vous aider à éviter les pénalités.',
-    titleEn: 'Administrative and legal support',
-    textEn: 'Help with regulatory formalities, contract drafting, and tax compliance files to help you avoid penalties.',
-    tag: 'Conformité',
-    tagEn: 'Compliance',
+    title: 'Caisses et solutions POS',
+    text: 'Informatisation et gestion des caisses et systèmes POS pour faciliter le suivi des ventes et les opérations de votre commerce.',
+    titleEn: 'Cash registers and POS solutions',
+    textEn: 'Computerized setup and management of cash registers and POS systems to help track sales and run your shop.',
+    tag: 'Informatisation · Gestion',
+    tagEn: 'Digital setup · Management',
   },
 ]
 
@@ -137,8 +136,8 @@ export default function GestionFiscalite() {
           <h1>{name}</h1>
           <p className="tn-itc-hero__motto">{isEnglish ? 'Manage better, pay fairly.' : 'Gérez mieux, payez juste.'}</p>
           <p className="tn-itc-hero__intro">{isEnglish
-            ? 'Your partner for business structuring, legal compliance, and financial success. TN Gestion & Fiscalité helps entrepreneurs organize their activity and manage their accounting and tax obligations.'
-            : 'Votre cabinet partenaire pour la structuration, la conformité légale et la réussite financière de votre activité. TN Gestion & Fiscalité vous accompagne dans vos démarches administratives, comptables et fiscales.'}</p>
+            ? 'Your partner for setting up and registering a business, entrepreneurial guidance, CNPS support, TSF declarations, and computerized cash register and POS management.'
+            : 'Votre partenaire pour la création et l’immatriculation d’entreprise, l’accompagnement entrepreneurial, les dossiers CNPS, les déclarations TSF, ainsi que l’informatisation et la gestion des caisses et systèmes POS.'}</p>
           <div className="tn-itc-hero__actions">
             <Link to="/contact" className="tn-itc-primary">{isEnglish ? 'Talk to an adviser' : 'Parler à un conseiller'}<ArrowRight size={18} /></Link>
             <a href="#gestion-missions" className="tn-itc-secondary">{isEnglish ? 'Explore our services' : 'Découvrir nos prestations'}</a>
